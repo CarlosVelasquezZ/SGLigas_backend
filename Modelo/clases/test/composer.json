@@ -1,0 +1,22 @@
+{
+    "name": "carlos/test",
+    "description": "backend para la gestion de las ligas barriales en Quito",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Carlos\\Test\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Carlos"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "phpunit/phpunit": "^10.4"
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.8"
+    }
+}
