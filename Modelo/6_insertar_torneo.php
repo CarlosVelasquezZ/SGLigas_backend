@@ -39,8 +39,8 @@ function main() {
     * @param string $fecha_inicio La fecha de inicio del torneo en formato 'YYYY-MM-DD'.
     * @param string $fecha_fin La fecha de fin del torneo en formato 'YYYY-MM-DD'.
     * @param string $canchas Los nombres de las canchas separadas por como ejemplo (cancha1,cancha2).
-    * @param string $grupo Los id de los torneos para cada grupo separados por coma ejemplo (1,2) es opcional si y solo si la etapa es de grupos.
-    * @param int $num_clasificados El número de equipos que clasifican en cada etapa.
+    * @param int $grupo El numero de cuantos grupos habrán en caso que se etapa de grupos.
+    * @param int $num_clasificados El número de equipos que clasifican en cada etapa, si es etapa de grupos se debe separr por coma ejemplo (2,2).
     * @param int $id_categoria El ID de la categoría a la que pertenece el torneo.
     */
     $etapa = isset($_POST['etapa']) ? trim($_POST['etapa']) : "";
@@ -64,9 +64,10 @@ function main() {
             
             // Verifica que los datos no estén vacíos si es etapa de grupos.
             if(!empty($grupo)){
+                $array = explode(",", $num_clasificados);
                 // Inserta los nuevos torneos en la base de datos.
                 for($i=0;$i<$grupo;$i++){
-                    $resultado[$i] = $objeto_torneo->insertar_torneo($etapa, $fecha_inicio, $fecha_fin, "GRUPO ".$i+1, $num_clasificados[$i], $id_categoria, $canchas, $conexion);
+                    $resultado[$i] = $objeto_torneo->insertar_torneo($etapa, $fecha_inicio, $fecha_fin, "GRUPO ".$i+1, $array[$i], $id_categoria, $canchas, $conexion);
                 }
                 
                 // Devuelve los id de los torneos insertados.
@@ -82,8 +83,8 @@ function main() {
                 $resultado = $objeto_torneo->insertar_torneo($etapa, $fecha_inicio, $fecha_fin, $grupo, $num_clasificados, $id_categoria, $canchas, $conexion);
                 
                 // Verificar que se inserto el torneo.
-                if (!empty($resultado)) {
-                    echo json_encode(array('success' => true));
+                if ($resultado>0) {
+                    echo json_encode(array('success' => true,'datos' => $resultado));
                 } else {
                     echo json_encode(array('noInserto' => true));
                 }

@@ -29,7 +29,7 @@ class liga{
 
         if($stmt){
             // Vincular parámetros a la sentencia
-            mysqli_stmt_bind_param($stmt, "ssss", $nombre_liga, $fecha_fundacion, $direccion, $correo_admin, $estado);
+            mysqli_stmt_bind_param($stmt, "sssss", $nombre_liga, $fecha_fundacion, $direccion, $correo_admin, $estado);
             
             // Ejecutar la sentencia
             if(mysqli_stmt_execute($stmt)){
@@ -164,12 +164,12 @@ class liga{
         // Almacenar las ligas en un array
         if (mysqli_num_rows($resultado) > 0) {
             while ($fila = mysqli_fetch_assoc($resultado)) {
-                $ligas[] = $fila;
+                $liga[] = $fila;
             }
         }
 
         // Devolver todas las ligas o el nombre de una sola liga (array vacío si no encontro)
-        return $ligas;
+        return $liga;
     }
 
     /**

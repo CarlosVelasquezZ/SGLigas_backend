@@ -36,7 +36,7 @@ function main() {
     * @param string $nombre_equipo El nombre del equipo a insertar.
     * @param string $fecha_fundacion La fecha de fundación del equipo en formato 'YYYY-MM-DD'.
     * @param string $presidente El nombre del presidente del equipo.
-    * @param string $colores Los colores del equipo.
+    * @param string $colores Los colores del equipo en formato  RGB (Red, Green, Blue) hexadecimal ejemplo (#00ff04).
     * @param string $escudo La URL del escudo del equipo.
     * @param int $id_categoria El ID de la categoría a la que pertenece el equipo.
     * @param int $id_liga El ID de la liga a la que pertenece el equipo.

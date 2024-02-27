@@ -469,5 +469,74 @@ class jugador{
         // Devolver las estadisticas si se encuentra (array vacio si no encontro).
         return $estadisticas;
     }
+
+    /**
+     * Actualiza los detalles de un jugador en la base de datos.
+     *
+     * @param int $CI El número de cédula del jugador.
+     * @param string $posicion La posición del jugador.
+     * @param string $foto La URL de la foto del jugador.
+     * @param int $estatura La estatura del jugador en cm ejemplo (160).
+     * @param int $num_camiseta El numero de camiseta del jugador.
+     * @param int $id_equipo El ID del equipo al que pertenece el jugador.
+     * @param mysqli $conexion La conexión a la base de datos.
+     *
+     * @return bool `true` si se actualizó el jugador correctamente, `false` si no se pudo actualizar.
+     */
+    public function actualizar_jugador($CI, $posicion, $foto, $estatura, $num_camiseta, $id_equipo, $conexion){
+        // Inicializar variable de retorno
+        $respuesta = false;
+
+        // Crear la sentencia SQL con una consulta preparada.
+        $sql = "UPDATE jugadores SET posicion = ?, foto = ?, estatura = ?, num_camiseta = ?, id_equipo= ? WHERE CI= ?";
+        $stmt = mysqli_prepare($conexion, $sql);
+        
+        if ($stmt) {
+            // Vincular el parámetro a la sentencia
+            mysqli_stmt_bind_param($stmt, "ssiiii", $posicion, $foto, $estatura, $num_camiseta, $id_equipo, $CI);
+        
+            // Ejecutar la sentencia
+            if (mysqli_stmt_execute($stmt)) {
+                $respuesta = mysqli_stmt_execute($stmt);
+            }
+        }
+        // Cerrar la sentencia preparada
+        mysqli_stmt_close($stmt);
+
+        // Devolver `true` si se actualizo jugador, `false` en caso contrario.
+        return $respuesta;
+    }
+
+    /**
+    * Elimina un jugador de la base de datos.
+    *
+    * @param int $CI La CI del jugador a eliminar.
+    * @param mysqli $conexion La conexión a la base de datos.
+    *
+    * @return bool `true` si la eliminación fue exitosa, `false` en caso contrario.
+    */
+    public function eliminar_jugador($CI,$conexion){
+        // Inicializar variable de retorno
+        $respuesta = false;
+
+        // Crear la sentencia SQL con una consulta preparada.
+        $sql = "UPDATE jugadores SET estado = 'inactivo' WHERE CI= ?";
+        $stmt = mysqli_prepare($conexion, $sql);
+
+        if ($stmt) {
+            // Vincular el parámetro a la sentencia
+            mysqli_stmt_bind_param($stmt, "i", $CI);
+        
+            // Ejecutar la sentencia
+            if (mysqli_stmt_execute($stmt)) {
+                $respuesta = mysqli_stmt_execute($stmt);
+            }
+        }
+        // Cerrar la sentencia preparada
+        mysqli_stmt_close($stmt);
+
+        // Devolver `true` si actualizo el jugador en estado inactivo, `false` en caso contrario.
+        return $respuesta;
+    }
 }
 ?>

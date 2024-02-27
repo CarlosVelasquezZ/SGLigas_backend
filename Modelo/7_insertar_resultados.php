@@ -46,6 +46,7 @@ function main() {
     $id_torneo = isset($_POST['id_torneo']) ? intval(trim($_POST['id_torneo'])) : 0;
     $id_partido = isset($_POST['id_partido']) ? intval(trim($_POST['id_partido'])) : 0;
     $partido = isset($_POST['partido']) ? $_POST['partido'] : "";
+    $estado='jugado';
 
     // Crea instancias de las clases a ser usadas.
     $objeto_torneo = new torneo();

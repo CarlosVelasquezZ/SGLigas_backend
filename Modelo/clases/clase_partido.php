@@ -198,13 +198,13 @@ class partido{
         $k=$num_equipos-2;
         for($i=0;$i<$num_equipos-1;$i++){
             for($j=2;$j<$num_equipos;$j++){
-                //if($j%2!=0){
+                if($j%2!=0){
                     $fixture[$i][$j]=$equipos[$k];
                     $k--;
                     if($k==-1){
                         $k=$num_equipos-2;
                     }
-                //}
+                }
             }
         }
         

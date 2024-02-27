@@ -46,7 +46,7 @@ class sanciones{
         $respuesta = false;
 
         // Crear la sentencia SQL con una consulta preparada.
-        $sql = "UPDATE sanciones SET tribunal_local = ?, tribunal_visitante = ? responsables = ? WHERE id_partidos = ?;";
+        $sql = "UPDATE sanciones SET tribunal_local = ?, tribunal_visitante = ?, responsables = ? WHERE id_partidos = ?;";
         $stmt = mysqli_prepare($conexion, $sql);
 
         if($stmt){

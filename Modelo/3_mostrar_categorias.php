@@ -63,3 +63,4 @@ function main() {
 
 // Ejecuta la función principal.
 main();
+?>

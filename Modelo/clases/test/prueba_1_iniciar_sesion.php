@@ -1,10 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-include('../clase_usuario.php');
-include('../../conexion.php');
-require 'vendor/autoload.php';
-
 class prueba_1_iniciar_sesion extends TestCase {
 
     // Prueba de envio de datos correctos
@@ -25,8 +21,8 @@ class prueba_1_iniciar_sesion extends TestCase {
         $cuerpoRespuesta = json_decode($respuesta->getBody(), true);
         $this->assertArrayHasKey('token', $cuerpoRespuesta);
         $this->assertArrayHasKey('userData', $cuerpoRespuesta);
-        $this->assertEquals('usuario_existente@example.com', $cuerpoRespuesta['userData']['correo']);
-        $this->assertEquals('cliente', $cuerpoRespuesta['userData']['tipo_usuario']);
+        $this->assertEquals('nuevo_usuario@example.com', $cuerpoRespuesta['userData']['correo']);
+        $this->assertEquals('hincha', $cuerpoRespuesta['userData']['tipo_usuario']);
     }
 
     public function testEnvioDatosVacios() {
@@ -71,7 +67,7 @@ class prueba_1_iniciar_sesion extends TestCase {
         // Datos de contraseña incorrecta
         $datosUsuario = [
             'correo' => 'nuevo_usuario@example.com',
-            'password' => 'contraseña_segura'
+            'password' => 'contraseña_incorrecta'
         ];
 
         // Realizar la solicitud POST al script PHP

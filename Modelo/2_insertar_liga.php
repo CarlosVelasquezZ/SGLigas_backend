@@ -69,7 +69,7 @@ function main() {
                     if (empty($verificar)) {
 
                         // Consulta para insertar liga.
-                        $resultado = $objeto_liga->insertar_liga($nombre_liga, $fecha_fundacion, $direccion, $correo_admin, $conexion);
+                        $resultado = $objeto_liga->insertar_liga($nombre_liga, $fecha_fundacion, $direccion, $correo_admin, $estado, $conexion);
                         
                         // Verifica que se insertó la liga.
                         if ($resultado) {

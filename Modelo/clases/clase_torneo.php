@@ -22,7 +22,7 @@ class torneo{
         $fecha_fin = date('Y-m-d', strtotime($fecha_fin));
 
         // Convertir el array canchas a una cadena antes de insertarlo
-        $canchas_str = implode(',', $canchas);
+        //$canchas_str = implode(',', $canchas);
 
         // Crear la sentencia SQL con una consulta preparada.
         $sql = "INSERT INTO torneo(etapa, fecha_inicio, fecha_fin, grupo, num_clasificados, id_categoria, canchas) VALUES (?,?,?,?,?,?,?)";
@@ -30,7 +30,7 @@ class torneo{
 
         if($stmt){
             // Vincular parámetros a la sentencia
-            mysqli_stmt_bind_param($stmt, "ssssiis", $etapa, $fecha_inicio, $fecha_fin, $grupo, $num_clasificados, $id_categoria, $canchas_str);
+            mysqli_stmt_bind_param($stmt, "ssssiis", $etapa, $fecha_inicio, $fecha_fin, $grupo, $num_clasificados, $id_categoria, $canchas);
             
             // Ejecutar la sentencia
             if(mysqli_stmt_execute($stmt)){

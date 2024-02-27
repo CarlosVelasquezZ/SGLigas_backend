@@ -1,10 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-include('../clase_usuario.php');
-include('../../conexion.php');
-require 'vendor/autoload.php';
-
 class prueba_1_insertar_usuario extends TestCase {
 
     // Prueba de envio de datos correctos
