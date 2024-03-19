@@ -13,7 +13,8 @@ class prueba_2_insertar_liga extends TestCase {
         ];
 
         // Realizar la solicitud POST al script PHP
-        $respuesta = $this->solicitarPost('http://localhost:8080/SGLIGAS/Modelo/2_insertar_liga.php', $datosLiga);
+        $respuesta = $this->solicitarPost('http://localhost:8080/SGLIGAS/Modelo/2_insertar_liga.php'
+        , $datosLiga);
 
         // Verificar si la solicitud fue exitosa
         $this->assertEquals(200, $respuesta->getStatusCode());

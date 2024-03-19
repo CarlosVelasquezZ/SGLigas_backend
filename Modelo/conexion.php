@@ -27,8 +27,8 @@ configurar_CORS();
  */
 function conexion_DB() {
     $server = "brzdpx5hq52w25hlgmwk-mysql.services.clever-cloud.com"; 
-    $user = "ubkfifhwkdhvld6s"; 
-    $pass = "26VWkDo2fBwaxMJ1T8sa"; 
+    $user = ""; 
+    $pass = ""; 
     $db = "brzdpx5hq52w25hlgmwk"; 
 
     $conectar = mysqli_connect($server, $user, $pass, $db);
